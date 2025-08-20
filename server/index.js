@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ["https://aiimage-generators.netlify.app"], // ✅ your Netlify frontend
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 app.use(express.json({ limit: "200mb" })); // ✅ Required for JSON body parsing
 app.use(express.urlencoded({ extended: true, limit: "200mb" }));
 
