@@ -1,74 +1,210 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 🎨 AI Image Generator – MERN Stack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An AI-powered image generation web application that transforms text prompts into images using Artificial Intelligence. Users can generate creative images from text descriptions, explore previously generated images, and share their creations with the community.
 
-## Available Scripts
+## 🚀 Project Overview
 
-In the project directory, you can run:
+The **AI Image Generator** is a full-stack web application built using the MERN stack and Hugging Face AI API. It allows users to enter descriptive text prompts and generate AI-generated images using the Stable Diffusion XL model.
 
-### `npm start`
+The application also provides a community gallery where users can publish their generated images along with prompts and usernames.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **AI Image Generation:** Generate images from text descriptions using Hugging Face's Stable Diffusion XL model.
+- **Text-to-Image Conversion:** Convert natural language prompts into AI-generated visuals.
+- **Community Gallery:** Explore images shared by other users.
+- **Share Creations:** Publish generated images with usernames and prompts.
+- **Cloud Image Storage:** Store and manage images using Cloudinary.
+- **Search Functionality:** Search for images based on prompts.
+- **Responsive Interface:** Interactive user interface with a modern dark theme.
+- **MongoDB Integration:** Store image posts and related information.
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, JavaScript |
+| UI Styling | Styled Components, Material UI |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| AI Model | Hugging Face – Stable Diffusion XL |
+| Image Storage | Cloudinary |
+| API Communication | Axios, REST API |
+| Routing | React Router DOM |
 
-### `npm run build`
+## 🏗️ Project Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application follows a client-server architecture.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Frontend:** React.js handles the user interface, prompt input, image generation requests, and community gallery.
+2. **Backend:** Node.js and Express.js handle API requests and application logic.
+3. **AI Integration:** Hugging Face API processes text prompts and generates images.
+4. **Database:** MongoDB stores image posts, usernames, prompts, and image URLs.
+5. **Cloud Storage:** Cloudinary stores uploaded images and provides image URLs.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📂 Project Structure
 
-### `npm run eject`
+```text
+Image-Generator/
+│
+├── client/
+│   ├── public/
+│   └── src/
+│       ├── api/
+│       │   └── index.js
+│       ├── components/
+│       │   ├── Button.js
+│       │   ├── GenerateImageForm.jsx
+│       │   ├── GeneratedImageCard.jsx
+│       │   ├── ImageCard.jsx
+│       │   ├── Navbar.jsx
+│       │   ├── SearchBar.jsx
+│       │   └── TextInput.jsx
+│       ├── pages/
+│       │   ├── CreatePost.jsx
+│       │   └── Home.jsx
+│       ├── utils/
+│       │   └── Theme.js
+│       ├── App.js
+│       └── index.js
+│
+├── server/
+│   ├── controllers/
+│   │   ├── GenerateAIImage.js
+│   │   └── Posts.js
+│   ├── models/
+│   │   └── Posts.js
+│   ├── routes/
+│   │   ├── GenerateImage.js
+│   │   └── Posts.js
+│   ├── error.js
+│   ├── index.js
+│   └── package.json
+│
+├── package.json
+└── README.md
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Installation and Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Follow these steps to run the project locally.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Clone the Repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
 
-## Learn More
+```bash
+cd Image-Generator
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 2. Install Frontend Dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+cd client
+npm install
+```
 
-### Code Splitting
+### 3. Install Backend Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open another terminal:
 
-### Analyzing the Bundle Size
+```bash
+cd Image-Generator/server
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 4. Configure Environment Variables
 
-### Making a Progressive Web App
+Create a `.env` file inside the `server` directory.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Add the following environment variables:
 
-### Advanced Configuration
+```env
+MONGODB_URL=your_mongodb_connection_string
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+HUGGINGFACE_API_KEY=your_huggingface_api_key
 
-### Deployment
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Note:** Replace the placeholder values with your actual credentials. Never upload your `.env` file or expose API keys on GitHub.
 
-### `npm run build` fails to minify
+### 5. Start the Backend Server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Image-Generator
->>>>>>> 848520384cdc69c9936034f5ba83769b45e56615
+From the server directory:
+
+```bash
+npm start
+```
+
+The backend server runs at:
+
+```text
+http://localhost:8080
+```
+
+### 6. Start the Frontend
+
+From the client directory:
+
+```bash
+npm start
+```
+
+The React application runs at:
+
+```text
+http://localhost:3000
+```
+
+## 🔗 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/post/` | Retrieve all shared image posts |
+| POST | `/api/post/` | Create and publish an image post |
+| POST | `/api/generateImage/` | Generate an image using an AI prompt |
+
+## 🧠 How It Works
+
+1. The user enters a text prompt describing the desired image.
+2. The React frontend sends the prompt to the Express backend.
+3. The backend forwards the prompt to the Hugging Face Stable Diffusion XL API.
+4. The AI model generates an image based on the input prompt.
+5. The generated image is returned to the frontend.
+6. Users can publish their creations to the community gallery.
+7. Published image details are stored in MongoDB, while images are uploaded to Cloudinary.
+
+## 🔐 Environment and Security
+
+- API credentials are managed using environment variables.
+- Backend API endpoints handle AI image generation requests.
+- MongoDB manages application data.
+- Cloudinary handles image storage.
+
+## 🔮 Future Enhancements
+
+- User authentication and profile management.
+- Download generated images.
+- Image generation history.
+- Multiple AI image generation models.
+- Advanced image customization options.
+- Like, comment, and bookmark functionality.
+
+## 👩‍💻 Author
+
+**Revathi Chavala**
+
+B.Tech – Computer Science and Business Systems
+
+SRKR Engineering College
+
+GitHub: [Your GitHub Profile](https://github.com/revathichavala)
+
+---
+
+⭐ If you find this project interesting, consider giving it a star!
